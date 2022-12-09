@@ -10,7 +10,7 @@ function HomePage() {
       try {
         const pidiendoUsuarios = await fetch('http://localhost:3001/people')
         const respuesta = await pidiendoUsuarios.json()
-        respuesta.sort((a, b) => a.age - b.age )
+        respuesta.sort((a, b) => a.age - b.age)
         setCliente(respuesta)
       } catch (error) {
         console.log(error)
@@ -22,32 +22,56 @@ function HomePage() {
 
   return (
     <>
-      <h1 className="font-black text-4xl ml-10 mt-5  text-blue-900">Clientes</h1>
-      <p className="mt-5 ml-10 ">Administra  tus clientes</p>
-      <div className="bg-blue-600 hover:bg-blue-700 block w-32 mb-3 text-white rounded-md text-center m-auto   p-2 uppercase font-bold text-lg">
-          <Link href="/nuevoCliente"  type="button" > Agregar Usuario</Link>
+      <header className='flex justify-between items-center bg-slate-600'>
+        <div className='flex flex-col items-center'>
+          <h1
+            className="
+            font-black 
+            text-3xl 
+            text-rose-600
+            mb-3">
+            Clientes
+          </h1>
+          <p
+            className="p-3 text-white">
+            Administra  tus clientes
+          </p>
         </div>
-      <table className="w-full mt-5 table-auto shadow bg-white">
-        <thead className="bg-blue-800 text-white">
-          <tr>
-            <th className="p-2">Imagen</th>
-            <th className="p-2">Nombre</th>
-            <th className="p-2">Nickname</th>
-            <th className="p-2">Genero</th>
-            <th className="p-2">Ocupacion</th>
-            <th className="p-2">Acciones</th>
-
-          </tr>
-        </thead>
-        <tbody>
+        <button
+          className='
+              bg-rose-600 
+              hover:bg-rose-800 
+              block
+              w-32
+              text-white
+              mr-3
+              p-1.5
+            '>
+          <Link
+            href="/nuevoCliente"
+            type="button">
+            Agregar Usuario
+          </Link>
+        </button>
+      </header>
+      <aside className="">
+        <ul className='p-3 text-center grid grid-cols-6 bg-slate-300'>
+          <li className="">Imagen</li>
+          <li className="">Nombre</li>
+          <li className="">Nickname</li>
+          <li className="">Genero</li>
+          <li className="">Ocupacion</li>
+          <li className="">Acciones</li>
+        </ul>
+        <section>
           {clientes.map(cliente => (
             <Cliente
               key={cliente.id}
               cliente={cliente}
             />
           ))}
-        </tbody>
-      </table>
+        </section>
+      </aside>
     </>
   )
 }

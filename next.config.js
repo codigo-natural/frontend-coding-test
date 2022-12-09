@@ -1,7 +1,9 @@
 module.exports = {
   images: {
-    remotePatterns: [
-      { hostname: 'randomuser.me'}
-    ]
+    assetPrefix: [
+      'https://randomuser.me',
+      'https://stickerly.pstatic.net'
+    ],
+    domains: ['https://stickerly.pstatic.net']
   }
 }
